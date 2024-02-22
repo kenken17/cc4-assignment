@@ -1,5 +1,12 @@
 # Kubeadm Setup
 
+## Pre-requisites
+
+- Download virtual box
+- Download vagrant
+
+Referring to resource from [Udemy course](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/tree/master/kubeadm-clusters/virtualbox) on Vagrant file. And boot up three VMs.
+
 ## On all nodes
 
 #### Update and install packages
