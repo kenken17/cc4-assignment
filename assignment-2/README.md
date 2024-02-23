@@ -33,17 +33,23 @@ curl <ip>
 
 #### Solution:
 
-Run the below to create an cluster ip service
+Run the below to create a hello cluster ip service
 
 ```bash
 kubectl apply -f ./yaml/service.yaml
 
 # To get cluster ip
-kubectl get service ingress-service
+kubectl get service hello-service
 
-# Get to the cluster ip, test multiple times for diff ips returning
+# Get to the cluster ip (in master node), test multiple times for diff ips returning
 curl <cluster-ip>
 ```
+
+[ingress controller setup here](ingress/setup.md)
+
+## After above ingress setup, visit to https://cc4-hello.com
+
+![image](image-2.png)
 
 3. Persistence:
 
