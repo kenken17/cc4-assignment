@@ -29,6 +29,13 @@ spec:
               exec:
                 command:
                   ["/bin/sh", "-c", "echo My name is $HOSTNAME! > /home/me.txt"]
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - /home/me.txt
+            initialDelaySeconds: 5
+            periodSeconds: 5
       volumes:
         - name: hello-volume
           persistentVolumeClaim:

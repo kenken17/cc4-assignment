@@ -68,10 +68,29 @@ kubectl apply -f ./yaml/persistent-volume.yaml
 kubectl apply -f ./yaml/persistent-volume-claim.yaml
 ```
 
-There is a `postStart` life-cycle hook for the container to create a file. and mount to the node. So we can check the file is succefully mounted on the each node.
+There is a `postStart` life-cycle hook for the container to create a file. and mount to the node. So we can check the file is successfully mounted on the each node.
 
 We can check the file by ssh to each node.
 
 We could try to scale down the deployment to 1 replica, and check the file is still intact in the node.
 
 For local environment, I chose `hostPath` as the storage (this is definitely no for production). But if we have a cloud provider (i.e. aws), we can make use of block storage like EBS.
+
+**4. Bonus:**
+
+- Implement a basic liveness/readiness probe that checks for specific content in the "Hello World" response.
+- Use at least one LivenessProbe or ReadinessProbe to ensure the application is healthy.
+- Describe how you would scale the application horizontally.
+- Explain your chosen approach and its benefits/drawbacks.
+
+#### Solution:
+
+The above deployment has been modified to probe for liveness on the file it created in the `postStart` life-cycle hook. Just assume the container is `live` if the `me.txt` is being created for the sake of simplicity.
+
+I could add in more worker nodes for scaling horizontally. And if the nodes are resourceful enough, we could scale up the replicas for our deployment.
+
+The drawback of the above options being:
+
+- **Cost/resources:** Running multiple replicas/nodes incurs additional costs, both in terms of resources and cluster management.
+- **Complexity:** Managing multiple replicas/nodes introduces complexity, especially when it comes to monitoring, logging, and troubleshooting.
+- **State Management:** `Stateless` applications are better for horizontal scaling since they work independently. But scaling `stateful` applications horizontally may introduce challenges related to data management and consistency.
