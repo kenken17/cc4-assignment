@@ -21,3 +21,15 @@ spec:
           ports:
             - containerPort: 80
               hostPort: 80
+          volumeMounts:
+            - mountPath: /home
+              name: hello-volume
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  ["/bin/sh", "-c", "echo My name is $HOSTNAME! > /home/me.txt"]
+      volumes:
+        - name: hello-volume
+          persistentVolumeClaim:
+            claimName: hello-claim
