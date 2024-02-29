@@ -16,3 +16,46 @@ I have limited experience on actual Terraform provisioning. I am trying my best 
 - Use Terraform to build the challenge using IaC
 - Push the completed assignment to any public repo (Github or Gitlab)
 - You can choose any application to host for assignment#1. A good example of a web application that does CRUD operations can also be found here: https://github.com/chapagain/nodejs-mysql-crud
+
+#### Solution:
+
+ALl the files are under `./tf/`. Since this is a phase by phase setup. Suggest to copy files step by step.
+
+Let's create a user so we could start provisioning. Make sure we have an admin profile called `cc4`.
+
+Copy user setep under `./tf/01-user.tf` to a new folder `./cc4/`
+
+**Note**: For security, we could have stricter policy and enforce MFA for the group
+
+```bash
+# Run under ./cc4/ folder
+terraform init
+
+terraform plan
+
+terraform apply
+```
+
+Then we should setup the remote state instead local versioning the state.
+
+Copy remote state setup under `./tf/02-remote-state.tf` to `./cc4/`
+
+```bash
+# Run under ./cc4/ folder
+terraform plan
+
+terraform apply
+```
+
+Copy backend setup under `./tf/03-terraform.tf` to `./cc4/`
+
+```bash
+# Run under ./cc4/ folder
+terraform init
+```
+
+Then answer `Yes` for copying the state to the remote and remove the local state file.
+
+```bash
+rm terraform.tfstate
+```
