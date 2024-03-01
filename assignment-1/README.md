@@ -19,11 +19,11 @@ I have limited experience on actual Terraform provisioning. I am trying my best 
 
 #### Solution:
 
-ALl the files are under `./tf/`. Since this is a phase by phase setup. Suggest to copy files step by step.
+All the files are under `./tf` folder. Since this is a phase by phase setup. Suggest to copy files step by step.
 
 Let's create a user so we could start provisioning. Make sure we have an admin profile called `cc4`.
 
-Copy user setup under `./tf/01-user.tf` to a new folder `./cc4/`
+Copy user setup under `./tf/01-user.tf` to a new folder i.e. `./cc4`
 
 **Note**: For security, we could have stricter policy and enforce MFA for the group
 
@@ -38,7 +38,7 @@ terraform apply
 
 Then we should setup the remote state instead local versioning the state.
 
-Copy remote state setup under `./tf/02-remote-state.tf` to `./cc4/`
+Copy remote state setup under `./tf/02-remote-state.tf` to `./cc4`
 
 ```bash
 # Run under ./cc4/ folder
@@ -47,7 +47,7 @@ terraform plan
 terraform apply
 ```
 
-Copy backend setup under `./tf/03-terraform.tf` to `./cc4/`
+Copy backend setup under `./tf/03-terraform.tf` to `./cc4`
 
 ```bash
 # Run under ./cc4/ folder
@@ -71,4 +71,4 @@ terraform plan
 terraform apply
 ```
 
-Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4/`
+Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4`
