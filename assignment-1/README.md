@@ -36,6 +36,8 @@ terraform plan
 terraform apply
 ```
 
+---
+
 Then we should setup the remote state instead local versioning the state.
 
 Copy remote state setup under `./tf/02-remote-state.tf` to `./cc4`
@@ -60,6 +62,8 @@ Then answer `Yes` for copying the state to the remote and remove the local state
 rm terraform.tfstate
 ```
 
+---
+
 Create the three tier architecture starting by create a simple vpc with 6 subnets across two AZ (2 publics and 4 privates).
 
 ```bash
@@ -72,3 +76,5 @@ terraform apply
 ```
 
 Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4`
+
+---
