@@ -23,7 +23,7 @@ ALl the files are under `./tf/`. Since this is a phase by phase setup. Suggest t
 
 Let's create a user so we could start provisioning. Make sure we have an admin profile called `cc4`.
 
-Copy user setep under `./tf/01-user.tf` to a new folder `./cc4/`
+Copy user setup under `./tf/01-user.tf` to a new folder `./cc4/`
 
 **Note**: For security, we could have stricter policy and enforce MFA for the group
 
@@ -59,3 +59,16 @@ Then answer `Yes` for copying the state to the remote and remove the local state
 ```bash
 rm terraform.tfstate
 ```
+
+Create the three tier architecture starting by create a simple vpc with 6 subnets across two AZ (2 publics and 4 privates).
+
+```bash
+# Run under ./cc4/ folder
+terraform init
+
+terraform plan
+
+terraform apply
+```
+
+Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4/`
