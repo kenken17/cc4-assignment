@@ -1,6 +1,12 @@
 provider "aws" {
   region  = "ap-southeast-1"
   profile = "cc4"
+
+  default_tags {
+    tags = {
+      Name = "CC4"
+    }
+  }
 }
 
 resource "aws_iam_user" "provisioner_user" {
