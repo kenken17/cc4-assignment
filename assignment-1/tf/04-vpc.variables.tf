@@ -1,25 +1,25 @@
-variable "presentation-subnet-cidr" {
+variable "presentation_subnet_cidr" {
   default = [
-    "10.0.1.0/24",
-    "10.0.2.0/24"
+    "10.0.10.0/24",
+    "10.0.20.0/24"
   ]
 }
 
-variable "application-subnet-cidr" {
+variable "application_subnet_cidr" {
   default = [
-    "10.0.3.0/24",
-    "10.0.4.0/24"
+    "10.0.30.0/24",
+    "10.0.40.0/24"
   ]
 }
 
-variable "data-subnet-cidr" {
+variable "data_subnet_cidr" {
   default = [
-    "10.0.5.0/24",
-    "10.0.6.0/24"
+    "10.0.50.0/24",
+    "10.0.60.0/24"
   ]
 }
 
-variable "subnet-az" {
+variable "subnet_az" {
   default = [
     "ap-southeast-1a",
     "ap-southeast-1b"
