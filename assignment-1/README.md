@@ -66,6 +66,8 @@ rm terraform.tfstate
 
 Create the three tier architecture starting by create a simple vpc with 6 subnets across two AZ (2 publics and 4 privates).
 
+Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4`
+
 ```bash
 # Run under ./cc4/ folder
 terraform init
@@ -75,6 +77,23 @@ terraform plan
 terraform apply
 ```
 
-Copy vpc & subnets setup under `./tf/04-vpc.tf` to `./cc4`
+---
+
+Next to setup the basic networking of the tiers. We will create:
+
+1. Security groups
+2. Internet gateway (for outgoing and incoming traffic to the internet from public subnet)
+3. Route tables
+
+Copy networking setup under `./tf/05-network-tier-1.tf` to `./cc4`
+Copy networking setup under `./tf/05-network-tier-2.tf` to `./cc4`
+Copy networking setup under `./tf/05-network-tier-3.tf` to `./cc4`
+
+```bash
+# Run under ./cc4/ folder
+terraform plan
+
+terraform apply
+```
 
 ---
