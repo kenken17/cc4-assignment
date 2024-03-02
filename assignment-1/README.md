@@ -97,3 +97,16 @@ terraform apply
 ```
 
 ---
+
+Let's get into Database deployment now.
+
+Copy database setup under `./tf/06-database.tf` to `./cc4`
+
+```bash
+# Run under ./cc4/ folder
+terraform plan
+
+terraform apply
+```
+
+---
