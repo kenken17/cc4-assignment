@@ -21,8 +21,8 @@ resource "aws_vpc_security_group_ingress_rule" "data_inbound_mysql" {
   security_group_id            = aws_security_group.data_sg.id
   ip_protocol                  = "tcp"
   referenced_security_group_id = aws_security_group.application_sg.id
-  from_port                    = 33066
-  to_port                      = 33066
+  from_port                    = 3306
+  to_port                      = 3306
 }
 
 # Outbound rules
