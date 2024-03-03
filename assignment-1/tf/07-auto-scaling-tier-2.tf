@@ -37,7 +37,7 @@ resource "aws_lb_target_group" "application_tg" {
   }
 
   tags = {
-    Name = "Application Traget Group"
+    Name = "Application Target Group"
   }
 }
 
@@ -105,7 +105,7 @@ resource "aws_launch_template" "application_lt" {
 }
 
 # Auto-scaling group
-resource "aws_autoscaling_group" "appplication_asg" {
+resource "aws_autoscaling_group" "application_asg" {
   name                = "application_asg"
   max_size            = 2
   min_size            = 1
@@ -119,6 +119,6 @@ resource "aws_autoscaling_group" "appplication_asg" {
 
 # ALB Target Group attachment
 resource "aws_autoscaling_attachment" "application_attachment" {
-  autoscaling_group_name = aws_autoscaling_group.appplication_asg.id
+  autoscaling_group_name = aws_autoscaling_group.application_asg.id
   lb_target_group_arn    = aws_lb_target_group.application_tg.arn
 }

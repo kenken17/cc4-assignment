@@ -15,7 +15,7 @@ resource "aws_vpc_security_group_ingress_rule" "application_inbound_8080" {
   from_port         = 8080
   to_port           = 8080
 
-  # update this line when applicatin load balancer ios setup
+  # update this line when application load balancer is setup
   # referenced_security_group_id = aws_security_group.application_lb_sg.id
   referenced_security_group_id = aws_security_group.presentation_sg.id
 }
@@ -63,7 +63,7 @@ resource "aws_route_table" "application_rt_private" {
   }
 }
 
-resource "aws_route_table_association" "applicatin_rt_association_az" {
+resource "aws_route_table_association" "application_rt_association_az" {
   count = 2
 
   subnet_id      = aws_subnet.application_subnet[count.index].id
