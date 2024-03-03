@@ -9,14 +9,6 @@ resource "aws_security_group" "data_sg" {
 }
 
 # Inbound rules
-resource "aws_vpc_security_group_ingress_rule" "data_inbound_ssh" {
-  security_group_id            = aws_security_group.data_sg.id
-  ip_protocol                  = "tcp"
-  referenced_security_group_id = aws_security_group.application_sg.id
-  from_port                    = 22
-  to_port                      = 22
-}
-
 resource "aws_vpc_security_group_ingress_rule" "data_inbound_mysql" {
   security_group_id            = aws_security_group.data_sg.id
   ip_protocol                  = "tcp"

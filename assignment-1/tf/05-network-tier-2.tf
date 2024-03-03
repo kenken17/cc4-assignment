@@ -9,14 +9,6 @@ resource "aws_security_group" "application_sg" {
 }
 
 # Inbound rules
-resource "aws_vpc_security_group_ingress_rule" "application_inbound_ssh" {
-  security_group_id            = aws_security_group.application_sg.id
-  ip_protocol                  = "tcp"
-  referenced_security_group_id = aws_security_group.presentation_sg.id
-  from_port                    = 22
-  to_port                      = 22
-}
-
 resource "aws_vpc_security_group_ingress_rule" "application_inbound_8080" {
   security_group_id            = aws_security_group.application_sg.id
   ip_protocol                  = "tcp"

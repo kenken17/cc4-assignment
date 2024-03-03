@@ -25,14 +25,6 @@ resource "aws_vpc_security_group_ingress_rule" "presentation_inbound_https" {
   to_port           = 443
 }
 
-resource "aws_vpc_security_group_ingress_rule" "presentation_inbound_ssh" {
-  security_group_id = aws_security_group.presentation_sg.id
-  ip_protocol       = "tcp"
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 22
-  to_port           = 22
-}
-
 # Outbound rules
 resource "aws_vpc_security_group_egress_rule" "presentation_outbound_all" {
   security_group_id = aws_security_group.presentation_sg.id
