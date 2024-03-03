@@ -12,17 +12,12 @@ resource "aws_security_group" "presentation_sg" {
 resource "aws_vpc_security_group_ingress_rule" "presentation_inbound_http" {
   security_group_id = aws_security_group.presentation_sg.id
   ip_protocol       = "tcp"
-  cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
   to_port           = 80
-}
 
-resource "aws_vpc_security_group_ingress_rule" "presentation_inbound_https" {
-  security_group_id = aws_security_group.presentation_sg.id
-  ip_protocol       = "tcp"
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 443
-  to_port           = 443
+  # update this line when presentation load balancer is setup
+  # referenced_security_group_id = aws_security_group.presentation_lb_sg.id
+  cidr_ipv4 = "0.0.0.0/0"
 }
 
 # Outbound rules

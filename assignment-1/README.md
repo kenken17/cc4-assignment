@@ -131,7 +131,8 @@ In order to achieve highly scalable and fault tolerance system. We could make us
 - Copy auto scaling setup under `./tf/07-auto-scaling-tier-2.tf` to `./cc4`
 - Copy auto scaling variables under `./tf/07-auto-scaling-tier-2.variables.tf` to `./cc4`
 - Update the file security group to allow load balancer to access under `./tf/05-network-tier-2.tf`
-  - line 15 change from `aws_security_group.presentation_sg.id` to `aws_security_group.application_lb_sg.id`
+  - uncomment line 19
+  - comment out line 20
 
 ```bash
 # Run under ./cc4/ folder
@@ -141,3 +142,33 @@ terraform apply
 ```
 
 ---
+
+We have arrived at the outer tier, i.e. presentation tier. Let's create similar setup as tier 2.
+
+I have created a web tier AMI, i.e. `ami-0f10f8182f58a5e91` in `ap-southeast-1` (Singapore).
+
+- Copy auto scaling setup under `./tf/08-auto-scaling-tier-1.tf` to `./cc4`
+- Copy auto scaling variables under `./tf/08-auto-scaling-tier-1.variables.tf` to `./cc4`
+- Update the file security group to allow load balancer to access under `./tf/05-network-tier-1.tf`
+  - uncomment line 19
+  - comment out line 20
+
+```bash
+# Run under ./cc4/ folder
+terraform plan
+
+terraform apply
+```
+
+If all run smoothly, we could just try visit the dns from the internet facing load balancer by outputting:
+
+```bash
+# Run under ./cc4/ folder
+terraform output
+```
+
+**Note:** The workshop application is intended to use Aurora DB, which I am using RDS/Mysql so the home image will be different.
+
+I have deployed it at: http://presentation-lb-846083493.ap-southeast-1.elb.amazonaws.com/#/
+
+![image](site.png)

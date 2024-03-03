@@ -16,8 +16,8 @@ resource "aws_vpc_security_group_ingress_rule" "application_inbound_8080" {
   to_port           = 8080
 
   # update this line when application load balancer is setup
-  # referenced_security_group_id = aws_security_group.application_lb_sg.id
-  referenced_security_group_id = aws_security_group.presentation_sg.id
+  # referenced_security_group_id = aws_security_group.presentation_sg.id
+  referenced_security_group_id = aws_security_group.application_lb_sg.id
 }
 
 # Outbound rules
