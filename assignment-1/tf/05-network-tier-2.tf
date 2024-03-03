@@ -10,11 +10,14 @@ resource "aws_security_group" "application_sg" {
 
 # Inbound rules
 resource "aws_vpc_security_group_ingress_rule" "application_inbound_8080" {
-  security_group_id            = aws_security_group.application_sg.id
-  ip_protocol                  = "tcp"
+  security_group_id = aws_security_group.application_sg.id
+  ip_protocol       = "tcp"
+  from_port         = 8080
+  to_port           = 8080
+
+  # update this line when applicatin load balancer ios setup
+  # referenced_security_group_id = aws_security_group.application_lb_sg.id
   referenced_security_group_id = aws_security_group.presentation_sg.id
-  from_port                    = 8080
-  to_port                      = 8080
 }
 
 # Outbound rules

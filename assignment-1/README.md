@@ -130,6 +130,8 @@ In order to achieve highly scalable and fault tolerance system. We could make us
 
 - Copy auto scaling setup under `./tf/07-auto-scaling-tier-2.tf` to `./cc4`
 - Copy auto scaling variables under `./tf/07-auto-scaling-tier-2.variables.tf` to `./cc4`
+- Update the file security group to allow load balancer to access under `./tf/05-network-tier-2.tf`
+  - line 15 change from `aws_security_group.presentation_sg.id` to `aws_security_group.application_lb_sg.id`
 
 ```bash
 # Run under ./cc4/ folder
